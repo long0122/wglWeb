@@ -1,0 +1,182 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<%
+	String path_ = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path_ + "/";
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Warren的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta name="description" content="Warren的个人主页，专业从事网站开发、软件开发。">
+    <meta name="author" content="王冠龙 warren">
+    <meta name="keywords" content="王冠龙 warren web j2ee 网站开发 软件开发">
+
+
+    <!-- Le styles -->
+    <link href="<%=basePath%>wglHtml/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=basePath%>wglHtml/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=basePath%>wglHtml/assets/css/docs.css" rel="stylesheet">
+    <link href="<%=basePath%>wglHtml/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="<%=basePath%>wglHtml/assets/js/html5shiv.js"></script>
+    <![endif]-->
+	<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+ 	<script src="<%=basePath%>wglHtml/assets/js/jquery.js"></script>
+    <script src="<%=basePath%>wglHtml/assets/js/bootstrap.min.js"></script>
+
+    <script src="<%=basePath%>wglHtml/assets/js/holder/holder.js"></script>
+    <script src="<%=basePath%>wglHtml/assets/js/google-code-prettify/prettify.js"></script>
+
+    <script src="<%=basePath%>wglHtml/assets/js/application.js"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Warren</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="./index.html">主页</a>
+              </li>
+              <li>
+                <a href="#introduce">个人简介</a>
+              </li>
+              <li class="">
+                <a href="#examples">项目案例</a>
+              </li>
+              <li class="">
+                <a href="#contact">联系方式</a>
+              </li>
+			   <li class="">
+                <a href="./article.html">随记</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1> Warren</h1>
+    <p class="lead">高级软件工程师/ J2EE</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+        <!-- Download
+        ================================================== -->
+        <section id="introduce">
+          <div class="page-header">
+            <h1>个人简介</h1>
+          </div>
+ 		  <p>国籍：中国</p>
+		  <p>籍贯：山东</p>
+		  <p>姓名：王冠龙</p>
+		  <p>专业从事网站开发、软件开发。</p>
+        </section>
+
+
+
+        <!-- Examples
+        ================================================== -->
+        <section id="examples">
+          <div class="page-header">
+            <h1>项目案例</h1>
+          </div>
+          <p class="lead">以下是在线的几个网站，还有一些后台系统软件以及内网软件由于不能通过互联网访问就不列出来了。</p>
+          <ul class="thumbnails bootstrap-examples">
+            <li class="span3">
+              <a class="thumbnail" href="http://www.laikankan.cn">
+                <img src="<%=basePath%>wglHtml/assets/img/examples/laikk.jpg" alt="">
+              </a>
+              <h5>来看看网站</h5>
+            </li>
+			 <li class="span3">
+              <a class="thumbnail" href="http://www.jgee.cn/">
+                <img src="<%=basePath%>wglHtml/assets/img/examples/jasd.jpg" alt="">
+              </a>
+              <h5>吉安井岗水电设备成套制造有限公司网站</h5>
+            </li>
+			 <li class="span3">
+              <a class="thumbnail" href="http://zhouhai.x10.fjjsp.net/">
+                <img src="<%=basePath%>wglHtml/assets/img/examples/mxkj.jpg" alt="">
+              </a>
+              <h5>南昌明星科技发展有限公司网站</h5>
+            </li>
+            
+          </ul>
+        </section>
+
+
+
+
+        <!-- contact
+        ================================================== -->
+        <section id="contact">
+          <div class="page-header">
+            <h1>联系方式</h1>
+          </div>
+          <p class="lead">手机：15053470557</p>
+		  <p class="lead">QQ：125779473</p>
+        </section>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <ul class="footer-links">
+          <li><a href="./index.html">主页</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="./index.html#introduce">个人简介</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="./index.html#examples">项目案例</a></li>
+		  <li class="muted">&middot;</li>
+		  <li><a href="./index.html#contact">联系方式</a></li>
+		   <li class="muted">&middot;</li>
+		  <li><a href="./article.html">随记</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+
+    
+
+
+
+  </body>
+</html>
+

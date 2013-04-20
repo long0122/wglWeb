@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Warren的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta name="description" content="Warren的个人主页，专业从事网站开发、软件开发。">
+    <meta name="author" content="王冠龙 warren">
+    <meta name="keywords" content="王冠龙 warren web j2ee 网站开发 软件开发">
+
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Warren</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li>
+                <a href="./index.html">主页</a>
+              </li>
+              <li>
+                <a href="./index.html#introduce">个人简介</a>
+              </li>
+              <li class="">
+                <a href="./index.html#examples">项目案例</a>
+              </li>
+              <li class="">
+                <a href="./index.html#contact">联系方式</a>
+              </li>
+			  <li class="active">
+                <a href="./article.html">随记</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1> Warren</h1>
+    <p class="lead">高级软件工程师/ J2EE</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+        <!-- Download
+        ================================================== -->
+        <section id="article">
+          <div class="page-header">
+            <h2>Jquery mobile 新手问题总汇</h2>
+          </div>
+		  <p class="text-info">此文章将会持续更新，主要收录一些新手比较常见的问题。</p>
+		   <p class="text-warning">欢迎<a href="./index.html#contact">向我推荐</a>比较典型的常见问题，我会记录并整理进文章，方便自己更方便大家。</p>
+		  <h5  class="text-error"><span class="badge badge-warning">1</span>页面缩放显示问题</h5>
+		  <p><span class="label label-info">问题描述：</span></p>
+		  <p>页面似乎被缩小了，屏幕太宽了。</p>
+		  <p><span class="label label-important">解决办法：</span></p>
+		  <p>在head标签内加入：</p>
+		  <p><pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</pre></p>
+ 		  <h5  class="text-error"><span class="badge badge-warning">2</span> 页面跳转后样式丢失</h5>
+		  <p><span class="label label-info">问题描述：</span></p>
+		  <p>用ajax跳转的时候，从a.html跳转到b.html后，b.html的css以及js都失效了。</p>
+		  <p><span class="label label-important">解决办法：</span></p>
+		  <p>将所有的css以及js全部放在&lt;page&gt;div内。</p>
+		  <p><span class="label label-success">原理：</span></p>
+		  <p>由于jqm的ajax跳转的时候，只会把b.html中&lt;page&gt;内的内容加载进dom,而&lt;page&gt;外的代码都不会加载，所以导致在&lt;page&gt;外的js和css都失效了。</p>
+		  <h5  class="text-error"><span class="badge badge-warning">3</span> 跳转时重复调用pageinit方法的解决办法</h5>
+		  <p><span class="label label-info">问题描述：</span></p>
+		  <p>用ajax跳转的时候，从a.html跳转到b.html，用从b.html返回a.html等等这种反复跳转的时候，pageinit方法内的代码会调用多次。</p>
+		  <p><span class="label label-important">解决办法：</span></p>
+		  <p>在page中加入 data-dom-cache="true"属性，如：</p>
+		  <p><pre>&lt;div data-role="page" id="myPage" data-dom-cache="true"&gt;</pre></p>
+		  <p>然后把pageinit方法换为pageshow,如：</p>
+		  <p><pre>$("#myPage").live("pageshow", function() {<br/>//...do something<br/>});
+		  </pre></p>
+		  <h5  class="text-error"><span class="badge badge-warning">4</span> 如何调用loading效果</h5>
+		   <p><span class="label label-important">js代码：</span></p>
+		   <p><pre>//显示loading<br/>function showLoading(){<br/>$.mobile.loadingMessageTextVisible = true;<br/>$.mobile.showPageLoadingMsg("a", "加载中..." );<br/>} </pre></p>
+		 <p><pre>//隐藏loading<br/>function hideLoading(){<br/>$.mobile.hidePageLoadingMsg();<br/>} </pre></p>
+		  <h5  class="text-error"><span class="badge badge-warning">5</span> 动态改变了list的内容，但是内容并没有变化</h5>
+		  <p><span class="label label-important">解决办法：</span></p>
+		  <p>调用组件的refresh方法，刷新list,如：</p>
+		  <p><pre>$("#contentList").append(content).listview('refresh');</pre></p>
+		  <p><span class="label label-success">原理：</span></p>
+		  <p>jqm组件的显示原理是把原始的web组件隐藏，而用jqm自定义的UI组件来代替原始的web组件显示。动态的改变了list的值，其实改变的是原始组件list的值，而jqm的list组件的值并没有被更新，所以需要调用list组件的refresh方法来使其更新并显示。</p>
+		  <div class="alert alert-block">
+		  <h5>注意:</h5>此问题不只局限于list组件，基本所有的jqm UI组件在改变值之后都需要调用组件对应的refresh方法，例如button组件等等。
+		  </div>
+			<h5  class="text-error"><span class="badge badge-warning">6</span> ...还有什么需要补充问题？<a href="./index.html#contact">请联系我</a></h5>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <ul class="footer-links">
+          <li><a href="./index.html">主页</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="./index.html#introduce">个人简介</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="./index.html#examples">项目案例</a></li>
+		  <li class="muted">&middot;</li>
+		  <li><a href="./index.html#contact">联系方式</a></li>
+		  <li class="muted">&middot;</li>
+		  <li><a href="./article.html">随记</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+    <script src="assets/js/application.js"></script>
+
+  </body>
+</html>

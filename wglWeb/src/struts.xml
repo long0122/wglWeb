@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="false"/>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!--全局跳转 -->
+	<package name="myDefault" extends="struts-default">
+		<interceptors>
+			<interceptor name="MyInterceptor" class="com.wgl.web.interceptor.MyInterceptor"></interceptor>
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="MyInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+	</package>
+	
+
+
+	<!-- ===============前台====================== -->
+	<package name="index" extends="myDefault" namespace="/main">
+		<!-- 首页 -->
+		<action name="index" class="index">
+			<result name="indexPage">/index/index.jsp</result>
+			<interceptor-ref name="myInterceptorStack"></interceptor-ref>
+		</action>
+		<!-- 文章 -->
+		<action name="article" class="article">
+			<result name="articlePage">/index/article.jsp</result>
+			<interceptor-ref name="myInterceptorStack"></interceptor-ref>
+		</action>
+		<!-- 登陆 -->
+		<action name="login" class="login">
+			<result name="loginPage">/login/login.jsp</result>
+			<result name="indexAction" type="chain">index</result>
+			<interceptor-ref name="myInterceptorStack"></interceptor-ref>
+		</action>
+		<!-- 留言 -->
+		<action name="message" class="message">
+			<result name="messagePage">/index/message.jsp</result>
+			<result name="messageAction" type="chain">message</result>
+			<interceptor-ref name="myInterceptorStack"></interceptor-ref>
+		</action>
+	</package>
+
+
+
+
+	<!--  ======================ajax ========================-->
+	<!--  ajax模块 -->
+	<package name="ajax" extends="json-default">
+		<action name="ajax" class="ajax">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+
+</struts>
+	
